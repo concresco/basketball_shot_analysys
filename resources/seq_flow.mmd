@@ -1,0 +1,36 @@
+sequenceDiagram
+    participant User as U
+    participant WebApp as W
+    participant API as A
+    participant ShotAnalyzer as S
+    participant Database as D
+    participant Chart as C
+    
+    U->>W: Open web application
+    W->>U: Show homepage
+    U->>W: Upload video
+    W->>A: Upload video
+    A->>D: Save video
+    A->>U: Return video ID
+    W->>U: Show video analysis page
+    U->>W: Analyze video
+    W->>A: Analyze video
+    A->>D: Get video
+    D->>A: Return video
+    A->>S: Analyze video
+    S->>S: Analyze shot
+    S->>A: Return analyzed shots
+    A->>W: Return analyzed shots
+    W->>U: Show analysis page
+    U->>W: Show accuracy chart
+    W->>C: Show accuracy chart
+    C->>C: Generate accuracy chart
+    C->>W: Return accuracy chart
+    W->>U: Show angle chart
+    W->>C: Show angle chart
+    C->>C: Generate angle chart
+    C->>W: Return angle chart
+    W->>U: Show trajectory chart
+    W->>C: Show trajectory chart
+    C->>C: Generate trajectory chart
+    C->>W: Return trajectory chart
